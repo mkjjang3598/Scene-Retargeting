@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scene Retargeting</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/bulma_toggle.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5fd1dd8417.js" crossorigin="anonymous"></script>
+
+    <!-- Academicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+
+    <!-- MathJax -->
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$']] } };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png"/>
+    <link rel="icon" sizes="32x32" href="./assets/favicon-32x32.png"/>
+    <link rel="icon" sizes="16x16" href="./assets/favicon-16x16.png"/>
+  </head>
+
+  <body>
+
+    <!-- title / authors / icons -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-widescreen has-text-centered">
+          <!-- title -->
+          <h1 class="title is-size-1 is-size-2-mobile publication-title">
+            Scene Retargeting: Learning Object Placement<br/>with Analogical Transfer
+          </h1>
+          <!-- TODO: uncomment once accepted (ICLR 2027, currently under review)
+          <div class="is-size-4-tablet publication-institute">
+            <span class="author-block">ICLR 2027<br/></span>
+          </div>
+          -->
+
+          <!-- authors -->
+          <div class="container is-max-desktop has-text-centered author-list">
+            <div class="author-row">
+              <div class="is-size-5-tablet publication-authors" style="white-space: nowrap;">
+                <a class="author-blocks" href="https://mkjjang3598.github.io">Minkwan Kim</a>
+              </div>
+              <div class="is-size-5-tablet publication-authors" style="white-space: nowrap;">
+                <a class="author-blocks" href="https://www.junhokim.xyz">Junho Kim</a>
+              </div>
+              <div class="is-size-5-tablet publication-authors" style="white-space: nowrap;">
+                <a class="author-blocks" href="https://veldic.github.io">Seungmin Lee</a>
+              </div>
+              <div class="is-size-5-tablet publication-authors" style="white-space: nowrap;">
+                <a class="author-blocks" href="https://www.changwoon.info/">Changwoon Choi</a>
+              </div>
+              <div class="is-size-5-tablet publication-authors" style="white-space: nowrap;">
+                <a class="author-blocks" href="http://3d.snu.ac.kr/members">Young Min Kim</a><sup class="corr-mark">*</sup>
+              </div>
+            </div>
+          </div>
+
+          <div class="is-size-5-tablet publication-institute">
+            <span class="author-block">Seoul National University</span>
+          </div>
+          <div class="corresponding-note">
+            <span><sup>*</sup>Corresponding author</span>
+          </div>
+
+          <div class="logo-list">
+            <a class="lab-logo" href="https://3d.snu.ac.kr">
+              <img src="./assets/3dv.png">
+            </a>
+          </div>
+
+          <!-- icons -->
+          <div class="is-size-5 link-blocks">
+            <!-- TODO: fill in arXiv links once the paper is public -->
+            <a class="button link-button is-rounded" href="">
+              <span class="icon">
+                <i class="fa-solid fa-file"></i>
+              </span>
+              <span>Paper</span>
+            </a>
+            <a class="button link-button is-rounded" href="">
+              <span class="icon">
+                <i class="ai ai-arxiv"></i>
+              </span>
+              <span>arXiv</span>
+            </a>
+            <a class="button link-button is-rounded" href="#video">
+              <span class="icon">
+                <i class="fa-brands fa-youtube"></i>
+              </span>
+              <span>Video</span>
+            </a>
+            <a class="button link-button is-rounded is-disabled" aria-disabled="true">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code (Coming Soon)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- teaser -->
+    <section class="hero">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img src="./assets/teaser.png" width="100%" style="display: block; margin: auto" />
+          <h2 class="tldr" style="margin-top: 1rem">
+            <i>From a <b>reference scene</b>, we reproduce semantically coherent and physically plausible layouts in target rooms with <b>different floor plans</b> and <b>object instances</b>.</i>
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Abstract
+          </h2>
+          <div class="content has-text-justified">
+            <p>
+              Interactive simulations of embodied AI or spatial computing applications build on realistic 3D scenes that support daily activities.
+              However, sparse, irregular layout structures impose scene-specific physical constraints, making it hard to define a generalizable framework for generating similar functional context.
+              We formalize <b>Scene Retargeting</b> as stably transferring the semantically coherent spatial organization across layouts, rather than relying on textual descriptions or pairwise relationships.
+              Our cluster-wise transfer flexibly handles mismatched object instances and adapts to distinctive floor plans.
+              We optimize to preserve the rich semantic context of individual clusters by respecting the spatial distribution of foundation features.
+              We can then impose physical constraints to refine wall contacts, pairwise alignment, or clear passageways and openings.
+              Our framework outperforms state-of-the-art methods on layout generation on the 3D-FRONT dataset, and demonstrates downstream applications including real-to-sim transfer, analogical trajectory transfer, and multi-reference composition.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Video
+          </h2>
+        </div>
+        <video width="100%" style="display: block; margin: auto" controls muted playsinline preload="metadata">
+          <source src="./assets/results/supp_video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Method
+          </h2>
+          <img src="./assets/method.png" width="100%" style="display: block; margin: auto" />
+        </div>
+          <p class="normal-text has-text-justified">
+            <b>Method Overview.</b> In <b>stage 1</b> (Cluster Placement), functional clusters decomposed from the reference scene are placed onto the target floor plan by a learned cluster placer.
+            In <b>stage 2</b> (Object Arrangement), target object tokens cross-attend to Concerto features of the transferred reference layout within the layout decoder to assign object-level poses.
+            <b>Stage 3</b> (Analogical Refinement) matches objects across scenes, optimizes pairwise relations and wall clearances measured on the reference, and enforces physical validity to produce the final 3D layout.
+          </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Results <font size="4%">(3D-FRONT dataset)</font>
+          </h2>
+        </div>
+        <img src="./assets/results/qualitative.png" width="100%" style="display:block; margin:auto" />
+        <br/>
+        <p align="left" class="normal-text has-text-justified">
+          <b>Qualitative comparison.</b> Given the same reference scene and target room, baselines receive the reference through the channel they accept (a verbalized instruction or the target floor plan).
+          Our hierarchical framework preserves fine-grained spatial relationships of the reference across diverse room geometries while strictly respecting physical constraints.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Applications
+          </h2>
+        </div>
+        <img src="./assets/results/application.png" width="100%" style="display:block; margin:auto" />
+        <br/>
+        <p align="left" class="normal-text has-text-justified">
+          <b>Downstream applications.</b> Our framework supports various downstream scenarios without fine-tuning.
+          (a) Human and (b) camera trajectories authored in a reference scene carry over to retargeted scenes without manual re-authoring.
+          (c) A single real-world ScanNet++ scan is instantiated across different synthetic floor plans and object inventories.
+          (d) Functional clusters drawn from multiple reference rooms are composed into a single target layout.
+        </p>
+      </div>
+    </section>
+
+    <!-- BibTex section -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">BibTeX</h2>
+        </div>
+        <div class="box bibtex-box">
+          <pre>
+<!-- @article{kim2026sceneretargeting,
+  title={Scene Retargeting: Learning Object Placement with Analogical Transfer},
+  author={Kim, Minkwan and Kim, Junho and Lee, Seungmin and Choi, Changwoon and Kim, Young Min},
+  journal={arXiv preprint},
+  year={2026}
+} -->
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer class="footer" style="padding-top: 1rem">
+      <!-- navigation -->
+      <a role="button" class="navbar-burger" data-target="moreResearch" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+      <div class="navbar-menu" id="moreResearch">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center">
+          <div class="block is-flex" style="margin-bottom: 0px">
+            <a class="navbar-item" href="https://mkjjang3598.github.io">
+              <span class="icon">
+                <i class="fas fa-home"></i>
+              </span>
+            </a>
+            <a class="navbar-item" href="https://github.com/mkjjang3598">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- license -->
+      <div class="content has-text-centered" style="margin-top: 1.6rem">
+        <p>
+          This website is licensed under a
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+            >Creative Commons Attribution-ShareAlike 4.0 International License</a
+          >
+        </p>
+      </div>
+    </footer>
+  </body>
+
+</html>
