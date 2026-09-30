@@ -201,3 +201,23 @@
 .results-table td.has-text-left {
   text-align: left !important;
 }
+
+.sub-heading {
+  font-family: 'Nunito';
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #14274e;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.item-caption {
+  margin-top: 0.75rem;
+}
+
+.loop-video {
+  display: block;
+  width: 100%;
+  margin: auto;
+}

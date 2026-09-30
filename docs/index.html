@@ -83,7 +83,6 @@
 
           <!-- icons -->
           <div class="is-size-5 link-blocks">
-            <!-- TODO: fill in arXiv links once the paper is public -->
             <a class="button link-button is-rounded" href="https://arxiv.org/abs/2609.36801">
               <span class="icon">
                 <i class="fa-solid fa-file"></i>
@@ -95,12 +94,6 @@
                 <i class="ai ai-arxiv"></i>
               </span>
               <span>arXiv</span>
-            </a>
-            <a class="button link-button is-rounded" href="#video">
-              <span class="icon">
-                <i class="fa-brands fa-youtube"></i>
-              </span>
-              <span>Video</span>
             </a>
             <a class="button link-button is-rounded is-disabled" aria-disabled="true">
               <span class="icon">
@@ -146,19 +139,6 @@
       </div>
     </section>
 
-    <section class="section" id="video">
-      <div class="container is-max-desktop">
-        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
-          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
-            Video
-          </h2>
-        </div>
-        <video width="100%" style="display: block; margin: auto" controls muted playsinline preload="metadata">
-          <source src="./assets/results/supp_video.mp4" type="video/mp4" />
-        </video>
-      </div>
-    </section>
-
     <section class="section">
       <div class="container is-max-desktop">
         <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
@@ -172,6 +152,22 @@
             In <b>stage 2</b> (Object Arrangement), target object tokens cross-attend to Concerto features of the transferred reference layout within the layout decoder to assign object-level poses.
             <b>Stage 3</b> (Analogical Refinement) matches objects across scenes, optimizes pairwise relations and wall clearances measured on the reference, and enforces physical validity to produce the final 3D layout.
           </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Retargeting Process
+          </h2>
+        </div>
+        <video class="loop-video" autoplay loop muted playsinline preload="auto">
+          <source src="./assets/results/process/process.mp4" type="video/mp4" />
+        </video>
+        <p class="normal-text has-text-justified item-caption">
+          <b>Retargeting process.</b> We visualize the full pipeline on a single example, from the reference scene, target floor plan, and target inventory to the final layout, showing how each stage progressively arranges the target room.
+        </p>
       </div>
     </section>
 
@@ -198,13 +194,43 @@
             Applications
           </h2>
         </div>
-        <img src="./assets/results/application.png" width="100%" style="display:block; margin:auto" />
-        <br/>
-        <p align="left" class="normal-text has-text-justified">
-          <b>Downstream applications.</b> Our framework supports various downstream scenarios without fine-tuning.
-          (a) Human and (b) camera trajectories authored in a reference scene carry over to retargeted scenes without manual re-authoring.
-          (c) A single real-world ScanNet++ scan is instantiated across different synthetic floor plans and object inventories.
-          (d) Functional clusters drawn from multiple reference rooms are composed into a single target layout.
+        <p class="normal-text has-text-justified">
+          Our framework supports various downstream scenarios without fine-tuning. Because spatial relations are faithfully preserved, content authored in a reference scene carries over to the retargeted scene.
+        </p>
+        <h3 class="sub-heading">Human &amp; Robot Trajectory Transfer</h3>
+        <video class="loop-video" autoplay loop muted playsinline preload="auto">
+          <source src="./assets/results/apps/trajectory.mp4" type="video/mp4" />
+        </video>
+        <p class="normal-text has-text-justified item-caption">
+          A human interaction path and a mobile robot trajectory authored in the reference scene are transferred to the retargeted room. Waypoints attached to reference objects map directly to their target counterparts, preserving navigational context across different room geometries.
+        </p>
+        <h3 class="sub-heading">Camera Trajectory Transfer</h3>
+        <video class="loop-video" autoplay loop muted playsinline preload="auto">
+          <source src="./assets/results/apps/camera.mp4" type="video/mp4" />
+        </video>
+        <p class="normal-text has-text-justified item-caption">
+          A 3D camera trajectory is transferred and rendered from a first-person view in both scenes. The inset shows the camera path on the floor plan.
+        </p>
+        <h3 class="sub-heading">Real-to-Sim</h3>
+        <video class="loop-video" autoplay loop muted playsinline preload="auto">
+          <source src="./assets/results/apps/real2sim.mp4" type="video/mp4" />
+        </video>
+        <p class="normal-text has-text-justified item-caption">
+          A real ScanNet++ scan serves as the reference. A single capture is instantiated across different synthetic floor plans and object inventories, yielding a family of simulation environments.
+        </p>
+        <h3 class="sub-heading">Multiple Reference Composition</h3>
+        <video class="loop-video" autoplay loop muted playsinline preload="auto">
+          <source src="./assets/results/apps/multiref.mp4" type="video/mp4" />
+        </video>
+        <p class="normal-text has-text-justified item-caption">
+          Since transfer operates at the functional cluster level, clusters drawn from two independent reference rooms are composed into a single target layout.
+        </p>
+        <h3 class="sub-heading">Same-Inventory Relocation</h3>
+        <video class="loop-video" autoplay loop muted playsinline preload="auto">
+          <source src="./assets/results/apps/relocation.mp4" type="video/mp4" />
+        </video>
+        <p class="normal-text has-text-justified item-caption">
+          A special case where the object inventory is fixed and only the room changes, as when a household moves its furniture to a new home. Clusters are relocated and wall clearances are re-established without any retraining.
         </p>
       </div>
     </section>
